@@ -20,22 +20,29 @@ RUN apt-get update && \
         whois && \
     apt-get clean -y
 
+# Current PyTorch release for CPU-only
 RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
+# Current tensorflow release for CPU-only
+RUN pip install tensorflow
+# Current fastai release for CPU-only
+RUN pip install fastai
 
+# Other dependencies
 RUN pip install \
-        fastai \
         graphviz \
+        h5py \
+        ipython['all'] \
         ipywidgets \
         jupyter \
-        ipython['all'] \
+        Pillow \
         scikit-learn \
         scipy \
+        sklearn \
         tables \
         xgboost \
         xlrd
 
-RUN useradd jupyter -m -p `mkpasswd jupyter` -s /bin/bash
-
+# Jupyter dependencies
 RUN pip install \
         jupyter_contrib_nbextensions==0.5.0 \
         jupyter_nbextensions_configurator==0.4.0 && \
@@ -55,7 +62,11 @@ RUN pip install \
     jupyter nbextension enable codefolding/edit --system && \
     jupyter nbextension enable cell_filter/cell_filter --system
 
+
+# Setup user
+RUN useradd jupyter -m -p `mkpasswd jupyter` -s /bin/bash
 EXPOSE 8000
 USER jupyter
 WORKDIR /home/jupyter
+# Clone latest fastai repo
 RUN git clone https://github.com/fastai/fastai.git

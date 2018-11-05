@@ -3,6 +3,9 @@
 A Jupyter Notebook Docker image. It includes the following kernels:
 
 - [fast.ai](https://www.fast.ai/)
+- [Pytorch](https://pytorch.org) # CPU based
+- [Tensorflow](https://www.tensorflow.org) # CPU based
+- [Skikit-learn](http://scikit-learn.org/)
 - Python 3
 
 ## Build & Launch
