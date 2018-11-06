@@ -23,12 +23,16 @@ RUN apt-get update && \
 # Current PyTorch release for CPU-only
 RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
 # Current tensorflow release for CPU-only
-RUN pip install tensorflow
+RUN pip install tensorflow==1.11
 # Current fastai release for CPU-only
 RUN pip install fastai
 
 # Other dependencies
-RUN pip install \
+RUN pip install -U \
+        bcolz \
+        opencv-python \
+        seaborn \
+        numpy \
         graphviz \
         h5py \
         ipython['all'] \
@@ -66,7 +70,13 @@ RUN pip install \
 # Setup user
 RUN useradd jupyter -m -p `mkpasswd jupyter` -s /bin/bash
 EXPOSE 8000
-USER jupyter
 WORKDIR /home/jupyter
-# Clone latest fastai repo
-RUN git clone https://github.com/fastai/fastai.git
+
+# Clone latest fastai repo and install fastai in development mode
+RUN git clone --progress https://github.com/fastai/fastai.git && \
+    cd fastai && \
+    tools/run-after-git-clone && \
+    pip install -e .[dev]
+
+USER jupyter
+#RUN git clone --progress https://github.com/fastai/fastai.git
