@@ -9,7 +9,7 @@ build:
 	@docker build -t latex-full:ubuntu .
 
 latex:
-	@docker run --rm -i -v "$PWD":/data --user="$(id -u):$(id -g)" latex-full:ubuntu "$@"
+	@docker run --rm -i -v "$PWD":/data --user="$(id -u):$(id -g)" latex-full:ubuntu "$(FILE)"
 clean:
 	@docker rm -v -f latex || true
 	@docker rmi -f latex || true
