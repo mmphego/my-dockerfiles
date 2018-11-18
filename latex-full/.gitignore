@@ -1,0 +1,8 @@
+*.swp
+*.log
+*.pdf 
+*.log 
+*.aux
+*.fdb_latexmk
+*.fls
+compile
