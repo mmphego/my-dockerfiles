@@ -25,7 +25,7 @@ $ make build
 
 ```shell
 # Command broken ie needs somework
-# make latex
+# make FILE="main.tex" latex
 # Way around
 ./latexgen main.tex
 ```
