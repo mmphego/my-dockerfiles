@@ -1,19 +1,19 @@
 FROM ubuntu:xenial
-LABEL Mpho Mphego <mpho112@gmail.com>
+LABEL author="Mpho Mphego <mpho112@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
-
-RUN apt-get update -q
-RUN apt-get install -qy \
-    texlive-full \
-    chktex \
-    latexmk \
-    texlive-latex-extra \
-    python-pygments \
-    gnuplot \
-    make \
-    git \
-    && apt clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -q && \
+    apt-get install -qy --no-install-recommends && \
+                        texlive-full \
+                        chktex \
+                        latexmk \
+                        texlive-latex-extra \
+                        python-pygments \
+                        gnuplot \
+                        make \
+                        git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf  /var/cache/apt/archives/
 
 VOLUME [ "/data" ]
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

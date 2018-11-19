@@ -1,8 +1,9 @@
-.PHONY: help build run stop start clean superclean log shell
+.PHONY: help build git run stop start clean superclean log shell
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  build				to build a jupyterhub docker container"
+	@echo "  git				to clone latest fast.ai repo"
 	@echo "  run 				to run pre-built jupyterhub container"
 	@echo "  start  			to start an existing jupyterhub container"
 	@echo "  stop   			to stop an existing jupyterhub container"
@@ -13,6 +14,9 @@ help:
 	@echo "  clean      			to stop and delete jupyterhub container"
 	@echo "  superclean     		to clean and delete jupyterhub images"
 
+git:
+	# Clone latest fastai repo and install fastai in development mode
+	@git clone --progress https://github.com/fastai/fastai.git
 
 build:
 	@docker build -t jupyterhub .
