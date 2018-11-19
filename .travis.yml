@@ -9,10 +9,10 @@ notifications:
 install:
   - make -C fast.ai build && make -C fast.ai run
   - make -C Jekyll build && make -C Jekyll run
-#  - make -C latex-full build && bash -c "latex-full/latexgen.sh main.tex"
 
 before_install:
-  - git clone --depth 1 https://github.com/mmphego/mmphego.github.io Jekyll
+  - cd fast.ai && git clone --depth 1 https://github.com/fastai/fastai.git && cd -
+  - cd Jekyll && git clone --depth 1 https://github.com/mmphego/mmphego.github.io && cd -
 
 script:
 - docker ps -a
