@@ -2,6 +2,8 @@
 
 List of my Dockerfiles
 
+[![Build Status](https://travis-ci.org/mmphego/my-dockerfiles.svg?branch=master)](https://travis-ci.org/mmphego/my-dockerfiles)
+
 * [fast.ai](fast.ai)
 * [Jekyll](Jekyll)
 * [LaTex](latex-full)
