@@ -1,0 +1,18 @@
+language: c
+sudo: required
+
+services:
+    - docker
+notifications:
+  email: false
+
+install:
+  - make -C fast.ai build && make -C fast.ai run
+  - make -C Jekyll build && make -C Jekyll run
+#  - make -C latex-full build && bash -c "latex-full/latexgen.sh main.tex"
+
+before_install:
+  - git clone --depth 1 https://github.com/mmphego/mmphego.github.io Jekyll
+
+script:
+- docker ps -a

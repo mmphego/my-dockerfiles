@@ -5,6 +5,7 @@ Simplified [Jekyll](https://jekyllrb.com) static-site generator running on a Doc
 By default this container will build and deploy your site to `localhost:4000`
 
 ## Usage
+
 Assuming Docker is installed.
 
 ### Build image
@@ -21,7 +22,6 @@ make run # That's it!!!
 ```
 
 Or just execute `make help`
-
 
 ## Feedback
 

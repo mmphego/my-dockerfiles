@@ -2,8 +2,8 @@ FROM jupyterhub/jupyterhub:0.9.3
 LABEL author="Mpho Mphego <mpho112@gmail.com>"
 
 # Install system software.
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+RUN apt-get update -q && \
+    apt-get install -qq -y --no-install-recommends \
         apg \
         build-essential \
         curl \

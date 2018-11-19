@@ -1,4 +1,4 @@
-#  LaTeX Docker
+# LaTeX Docker
 
 Simplified LaTeX docker image for compiling latex files. Details of the package can be found on http://packages.ubuntu.com/xenial/texlive-full.
 
@@ -15,13 +15,13 @@ Simplified LaTeX docker image for compiling latex files. Details of the package 
 
 ## Usage
 
-- Build image
+* Build image
 
 ```shell
-$ make build
+make build
 ```
 
-- Compile LaTeX
+* Compile LaTeX
 
 ```shell
 # Command broken ie needs somework
