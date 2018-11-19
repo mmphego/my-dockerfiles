@@ -3,7 +3,7 @@
 List of my Dockerfiles
 
 * [fast.ai](fast.ai)
-* [Jekyll](jekyll-serve)
+* [Jekyll](Jekyll)
 * [LaTex](latex-full)
 
 ## Feedback
