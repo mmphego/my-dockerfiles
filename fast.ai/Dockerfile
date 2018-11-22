@@ -1,5 +1,5 @@
 FROM jupyterhub/jupyterhub:0.9.3
-LABEL author="Mpho Mphego <mpho112@gmail.com>"
+LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 
 # Install system software.
 RUN apt-get update -q && \
