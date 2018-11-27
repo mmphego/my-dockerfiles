@@ -4,24 +4,24 @@ Simplified LaTeX docker image for compiling latex files. Details of the package 
 
 ## Softwares installed
 
-* Ubuntu: xenial
-* textlive-full
-* gnuplot
-* chktex
-* latexmk
-* texlive-latex-extra
-* python-pygments
-* git
+*  Ubuntu: xenial
+*  textlive-full
+*  gnuplot
+*  chktex
+*  latexmk
+*  texlive-latex-extra
+*  python-pygments
+*  git
 
 ## Usage
 
-* Build image
+*  Build image
 
 ```shell
 make build
 ```
 
-* Compile LaTeX
+*  Compile LaTeX
 
 ```shell
 # Command broken ie needs somework
