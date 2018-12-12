@@ -1,8 +1,12 @@
+# Usage:
+# docker run --rm -i -v "$PWD":/data --user="$(id -u):$(id -g)" latex-full:ubuntu main.tex
+
 FROM ubuntu:xenial
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
+# hadolint ignore=DL3008
 RUN apt-get update -q && \
-    apt-get install -qy --no-install-recommends && \
+    apt-get install -qy --no-install-recommends \
                         texlive-full \
                         chktex \
                         latexmk \

@@ -1,7 +1,10 @@
+# Usage
+# docker run --restart=on-failure:10 -d --name=jupyterhub -p 8000:8000 jupyterhub
 FROM jupyterhub/jupyterhub:0.9.3
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 
 # Install system software.
+# hadolint ignore=DL3008
 RUN apt-get update -q && \
     apt-get install -qq -y --no-install-recommends \
         apg \
@@ -18,6 +21,7 @@ RUN apt-get update -q && \
     rm -rf  /var/cache/apt/archives/
 
 # Current PyTorch release for CPU-only
+# hadolint ignore=DL3013
 RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html && \
 # Current tensorflow release for CPU-only
 pip install tensorflow==1.11 && \
