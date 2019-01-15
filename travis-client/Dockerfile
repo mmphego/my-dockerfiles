@@ -7,6 +7,6 @@ FROM ruby:2.5-alpine
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 # hadolint ignore=DL3018
 RUN apk add --no-cache build-base gcc bash cmake git
-RUN gem install travis
+RUN gem install travis ffi
 WORKDIR /data
 ENTRYPOINT ["travis"]
