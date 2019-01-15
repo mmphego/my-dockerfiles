@@ -1,5 +1,9 @@
 language: c
+
 sudo: required
+
+git:
+  depth: 3
 
 services:
   - docker
