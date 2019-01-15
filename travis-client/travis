@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -eo pipefail
+# ToDo: I'm sure theres a better way of passing multiple argument as one/string,
+# but for now, this is a solution
+docker run -it --rm -v "$PWD:/data" travis-ci/cli $1 $2 $3 $4 $5 $6
