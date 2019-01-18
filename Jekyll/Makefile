@@ -14,25 +14,25 @@ help:
 	@echo "  superclean     	to clean and delete jekyll images"
 
 build:
-	@docker build -t jekyll .
+	@docker build -t mmphego/jekyll .
 
 run:
-	@docker run --rm --name=jekyll -v "$PWD:/site" -p 4000:4000 jekyll
+	@docker run --rm --name=jekyll -v "$PWD:/site" -p 4000:4000 mmphego/jekyll
 
 start:
-	@docker start jekyll || true
+	@docker start mmphego/jekyll || true
 
 stop:
-	@docker stop jekyll || true
+	@docker stop mmphego/jekyll || true
 
 clean: stop
-	@docker rm -v -f jekyll || true
+	@docker rm -v -f mmphego/jekyll || true
 
 superclean: clean
-	@docker rmi -f jekyll || true
+	@docker rmi -f mmphego/jekyll || true
 
 log:
-	@docker logs -f jekyll
+	@docker logs -f mmphego/jekyll
 
 shell:
-	@docker exec -it jekyll bash
+	@docker exec -it mmphego/jekyll bash

@@ -1,5 +1,5 @@
 # Usage:
-# docker run --rm --name=jekyll -v "$PWD:/site" -p 4000:4000 jekyll
+# docker run --rm --name=jekyll -v "$PWD:/site" -p 4000:4000 mmphego/jekyll
 
 FROM ruby:2.5-alpine
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
