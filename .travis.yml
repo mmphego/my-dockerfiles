@@ -9,15 +9,16 @@ services:
   - docker
 
 notifications:
-  email: false
+  email: change
+
+before_install:
+  - cd fast.ai && git clone --depth 1 https://github.com/fastai/fastai.git && cd -
 
 install:
   - make -C fast.ai build && make -C fast.ai run
   - make -C latex-full build
+  - make -C markdownlint build
   - sudo make -C travis-client install && make -C travis-client build
-
-before_install:
-  - cd fast.ai && git clone --depth 1 https://github.com/fastai/fastai.git && cd -
 
 script:
   - docker ps -a
