@@ -6,7 +6,7 @@ Export [Medium](medium.com) posts to Markdown for reading offline
 Copy code below to your `~/.bashrc`
 
 ```shell
-alias mediumexporter='docker run --rm -it -v "$(pwd):/app" mmphego/medium $1 > medium_post.md'
+alias mediumexporter='docker run --rm -it -v "$(pwd):/app" mmphego/mediumexporter $1 > medium_post.md'
 ```
 
 ## Run Example
@@ -15,7 +15,7 @@ alias mediumexporter='docker run --rm -it -v "$(pwd):/app" mmphego/medium $1 > m
 mediumexporter https://medium.com/@macropus/export-your-medium-posts-to-markdown-b5ccc8cb0050
 # or
 URL="https://medium.com/@macropus/export-your-medium-posts-to-markdown-b5ccc8cb0050"
-docker run --rm -it -v "$(pwd):/app" mmphego/medium $URL > medium_post.md
+docker run --rm -it -v "$(pwd):/app" mmphego/mediumexporter $URL > medium_post.md
 ```
 See [this project on the Docker Hub](https://hub.docker.com/r/mmphego/mediumexporter).
 
