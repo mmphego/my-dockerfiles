@@ -1,6 +1,6 @@
 # Usage:
 # URL="https://medium.com/@macropus/export-your-medium-posts-to-markdown-b5ccc8cb0050"
-# docker run --rm -it -v "$(pwd):/app" mmphego/medium $URL > medium_post.md
+# docker run --rm -it -v "$(pwd):/app" mmphego/mediumexporter $URL > medium_post.md
 
 # Using alphine version instead of debian base image
 # https://github.com/nodejs/docker-node
