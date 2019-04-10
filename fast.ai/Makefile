@@ -19,25 +19,25 @@ git:
 	@git clone --progress https://github.com/fastai/fastai.git
 
 build:
-	@docker build -t jupyterhub .
+	@docker build -t mmphego/jupyterhub .
 
 run:
-	@docker run --restart=on-failure:10 -d --name=jupyterhub -p 8000:8000 jupyterhub
+	@docker run --restart=on-failure:10 -d --name=jupyterhub -p 8000:8000 mmphego/jupyterhub
 
 start:
-	@docker start jupyterhub || true
+	@docker start mmphego/jupyterhub || true
 
 stop:
-	@docker stop jupyterhub || true
+	@docker stop mmphego/jupyterhub || true
 
 clean: stop
-	@docker rm -v -f jupyterhub || true
+	@docker rm -v -f mmphego/jupyterhub || true
 
 superclean: clean
-	@docker rmi -f jupyterhub || true
+	@docker rmi -f mmphego/jupyterhub || true
 
 log:
-	@docker logs -f jupyterhub
+	@docker logs -f mmphego/jupyterhub
 
 shell:
-	@docker exec -it jupyterhub bash
+	@docker exec -it mmphego/jupyterhub bash

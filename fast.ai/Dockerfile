@@ -1,6 +1,6 @@
 # Usage
 # docker run --restart=on-failure:10 -d --name=jupyterhub -p 8000:8000 jupyterhub
-FROM jupyterhub/jupyterhub:0.9.3
+FROM jupyterhub/jupyterhub:latest
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 
 # Install system software.
@@ -11,42 +11,57 @@ RUN apt-get update -q && \
         build-essential \
         curl \
         graphviz \
+        libstring-mkpasswd-perl \
         locate \
         make \
-        nano \
+        python3.6-dev \
         software-properties-common \
-        wget && \
+        vim \
+        wget \
+        whois && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf  /var/cache/apt/archives/
 
+# Current tensorflow release for CPU-only
+RUN pip install tensorflow
+
+# Current fast.ai release by default it installs latest PyTorch
+RUN pip install fastai
+
+#####################################################################
+### Comment/Uncomment depending on your choice between CPU or GPU ###
+#####################################################################
+
 # Current PyTorch release for CPU-only
 # hadolint ignore=DL3013
-RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html && \
-# Current tensorflow release for CPU-only
-pip install tensorflow==1.11 && \
-# Current fastai release for CPU-only
-pip install fastai && \
+# RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html && \
+
+# Current PyTorch release for CUDA
+# hadolint ignore=DL3013
+# RUN pip torch torchvision
+
 # Other dependencies
-pip install -U \
+RUN pip install -U \
         bcolz \
-#        opencv-python \
-        seaborn \
-        numpy \
         graphviz \
         h5py \
         ipython['all'] \
         ipywidgets \
         jupyter \
+        numpy \
+        pandas \
         Pillow \
         scikit-learn \
         scipy \
+        seaborn \
         sklearn \
         tables \
         xgboost \
-        xlrd && \
+        xlrd
+
 # Jupyter dependencies
-pip install \
+RUN pip install \
         jupyter_contrib_nbextensions==0.5.0 \
         jupyter_nbextensions_configurator==0.4.0 && \
         jupyter contrib nbextension install --system --symlink && \
