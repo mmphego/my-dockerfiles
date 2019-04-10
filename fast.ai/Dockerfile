@@ -1,5 +1,6 @@
 # Usage
 # docker run --restart=on-failure:10 -d --name=jupyterhub -p 8000:8000 jupyterhub
+# hadolint ignore=DL3007
 FROM jupyterhub/jupyterhub:latest
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 
@@ -24,9 +25,11 @@ RUN apt-get update -q && \
     rm -rf  /var/cache/apt/archives/
 
 # Current tensorflow release for CPU-only
+# hadolint ignore=DL3013
 RUN pip install tensorflow
 
 # Current fast.ai release by default it installs latest PyTorch
+# hadolint ignore=DL3013
 RUN pip install fastai
 
 #####################################################################
