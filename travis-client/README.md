@@ -1,4 +1,6 @@
 # Dockerized Travis Client
+![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/travis-ci-cli.svg)
+![Docker Automated build](https://img.shields.io/docker/automated/mmphego/travis-ci-cli.svg)
 
 Simplified [travis-client](https://github.com/travis-ci/travis.rb#readme) to interface with a [Travis CI](travis-ci.org) service running on a Docker container, because installing ruby and gems plug-ins and making everything run smoothly isa pain!
 
@@ -6,7 +8,7 @@ Simplified [travis-client](https://github.com/travis-ci/travis.rb#readme) to int
 Assuming Docker is installed.
 
 ### Install travis
-Either install travis shell script in `/usr/local/bin` or run from `cwd`.
+Either install `travis` shell script in `/usr/local/bin` or run from `cwd`.
 
 ```shell
 make install # That's it!!!
@@ -24,7 +26,7 @@ Or just execute `make help`
 travis help
 ```
 
-![travis help](images/help.png)
+![travis help](assets/help.png)
 
 ## Feedback
 

@@ -1,4 +1,6 @@
 # Docker based Markdown Linter
+![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/markdownlint.svg)
+![Docker Automated build](https://img.shields.io/docker/automated/mmphego/markdownlint.svg)
 
 [markdownlint](https://github.com/DavidAnson/markdownlint) running in a Docker container.
 

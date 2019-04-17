@@ -1,4 +1,6 @@
 # Docker based Medium post exported to Markdown
+![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/mediumexporter.svg)
+![Docker Automated build](https://img.shields.io/docker/automated/mmphego/mediumexporter.svg)
 
 Export [Medium](medium.com) posts to Markdown for reading offline
 

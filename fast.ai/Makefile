@@ -41,3 +41,6 @@ log:
 
 shell:
 	@docker exec -it mmphego/jupyterhub bash
+
+push:
+	@docker push mmphego/jupyterhub

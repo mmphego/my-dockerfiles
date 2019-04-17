@@ -12,12 +12,14 @@ install:
 	@/bin/ln -nsf "${ROOT_DIR}/travis" /usr/local/bin/travis
 
 build:
-	@docker build -t travis-ci/cli .
+	@docker build -t mmphego/travis-ci-cli .
 
 clean:
-	@docker rm -v -f travis-ci/cli || true
+	@docker rm -v -f mmphego/travis-ci-cli || true
 
 superclean: clean
-	@docker rmi -f travis-ci/cli || true
+	@docker rmi -f mmphego/travis-ci-cli || true
 	@rm -rf /usr/local/bin/travis || true
 
+push:
+	@docker push mmphego/travis-ci-cli

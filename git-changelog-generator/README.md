@@ -1,5 +1,8 @@
 # Docker based [git-chglog](https://github.com/git-chglog/git-chglog)
 
+![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/git-chglog.svg)
+![Docker Automated build](https://img.shields.io/docker/automated/mmphego/git-chglog.svg)
+
 CHANGELOG generator implemented in Go (Golang) running in a Docker image/container.
 Thanks to the people that brought us [git-chglog](https://github.com/git-chglog/git-chglog)
 
