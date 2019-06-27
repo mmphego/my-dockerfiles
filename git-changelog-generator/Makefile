@@ -1,17 +1,19 @@
-.PHONY: help build clean
+.PHONY: help build clean push
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
-	@echo "  build		to build a git-chglog docker container."
-	@echo "  clean		to clean and delete git-chglog container and images."
-	@echo "  push		to push git-chglog to docker registry."
+	@echo "  build		to build a github-changelog docker container"
+	@echo "  clean		to clean and delete github-changelog container and images"
+	@echo "  superclean		to clean and delete github-changelog container and images"
 
 build:
-	@docker build -t mmphego/git-chglog .
+	@docker build -t mmphego/github-changelog .
 
 clean:
-	@docker rm -v -f mmphego/git-chglog
-	@docker rmi -f mmphego/git-chglog
+	@docker rm -v -f mmphego/github-changelog || true
+
+superclean: clean
+	@docker rmi -f mmphego/github-changelog || true
 
 push:
-	@docker push mmphego/git-chglog
+	@docker push mmphego/github-changelog

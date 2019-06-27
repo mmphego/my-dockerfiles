@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-IMAGE="latex-full:ubuntu"
+IMAGE="mmphego/latex-full"
 
 if [ $# -eq 0 ]; then
     echo "Usage: $0 main.tex"

@@ -1,28 +1,15 @@
-# Docker based [git-chglog](https://github.com/git-chglog/git-chglog)
+# Dockerized Github Changelog Generator
 
-![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/git-chglog.svg)
-![Docker Automated build](https://img.shields.io/docker/automated/mmphego/git-chglog.svg)
+This is a official containerization of [Github Changelog Generator](https://github.com/skywinder/github-changelog-generator).
 
-CHANGELOG generator implemented in Go (Golang) running in a Docker image/container.
-Thanks to the people that brought us [git-chglog](https://github.com/git-chglog/git-chglog)
-
-## Usage
-Copy code below to your `~/.bashrc`
-
-```shell
-alias git-changelog='docker run -it --rm -v "$PWD:/data" mmphego/git-chglog'
+For each Github Changelog Generator release, you will find the corresponding docker image tag.
+# Building
+```bash
+make build
 ```
 
-## Run Example
+# Usage
 
-```shell
-docker run -it --rm -v "$PWD:/data" mmphego/golang --init
-# Then
-docker run -it --rm -v "$PWD:/data" mmphego/golang -o CHANGELOG.md
+```bash
+alias git-changlog='docker run -it --rm -v "$(pwd)":/usr/local/src/your-app mmphego/github-changelog' >> ~/.bashrc
 ```
-
-See git-chglog documentation: [here](https://github.com/git-chglog/git-chglog/blob/master/README.md)
-
-## Feedback
-
-Feel free to fork it or send me PR to improve it.

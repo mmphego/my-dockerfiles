@@ -20,6 +20,5 @@ RUN apt-get update -q && \
     rm -rf  /var/cache/apt/archives/
 
 VOLUME [ "/data" ]
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod a+x /usr/local/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+WORKDIR /data
+CMD ["latexmk", "$@"]

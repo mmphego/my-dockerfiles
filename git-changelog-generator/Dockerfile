@@ -1,13 +1,14 @@
-# Usage:
-#   alias git-changelog='docker run -it --rm -v "$PWD:/data" mmphego/git-chglog'
-#   or
-#   docker run -it --rm -v "$PWD:/data" mmphego/golang
+FROM ruby:2.6.3-alpine3.9
 
-FROM golang:1.11-alpine
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
-# hadolint ignore=DL3018
 RUN apk add --no-cache build-base gcc bash cmake git
-# https://github.com/git-chglog/git-chglog
-RUN go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
-WORKDIR /data
-ENTRYPOINT ["git-chglog"]
+
+RUN gem install github_changelog_generator
+
+ENV SRC_PATH /usr/local/src/your-app
+RUN mkdir -p "${SRC_PATH}"
+
+VOLUME [ "${SRC_PATH}" ]
+WORKDIR "${SRC_PATH}"
+
+ENTRYPOINT ["github_changelog_generator"]
