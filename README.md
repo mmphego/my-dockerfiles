@@ -13,6 +13,7 @@ List of my Dockerfiles:
 *  [markdownlint](markdownlint)
 *  [Medium Posts 2 Markdown](medium2md)
 *  [Travis-Client.rb](travis-client)
+*  [github-changelog-generator](git-changelog-generator)
 
 ## Feedback
 
