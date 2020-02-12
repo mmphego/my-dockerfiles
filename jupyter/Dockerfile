@@ -1,11 +1,10 @@
 # Usage:
 #       docker run --restart=on-failure:10 -d --name=jupyterhub -p 8000:8000 jupyterhub
-ARG DL_TOOLS=0
+
 # hadolint ignore=DL3007
 FROM jupyterhub/jupyterhub:latest
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 
-# Install system software.
 # hadolint ignore=DL3008
 RUN apt-get update -q && \
     apt-get install -qq -y --no-install-recommends \
@@ -17,7 +16,6 @@ RUN apt-get update -q && \
     libstring-mkpasswd-perl \
     locate \
     make \
-    python3.8-dev \
     python3-dev \
     build-essential \
     bash-completion \
@@ -30,18 +28,18 @@ RUN apt-get update -q && \
     rm -rf  /var/cache/apt/archives/
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN curl https://bootstrap.pypa.io/get-pip.py | python3.8
+RUN curl https://bootstrap.pypa.io/get-pip.py | python3
 
-RUN if [ "${DL_TOOLS}" = "1" ]; then \
-    python3 -m pip install -U \
+ARG DL_TOOLS
+RUN test -z "$DL_TOOLS" || python3 -m pip install -U \
     # Current tensorflow release for CPU-only
     tensorflow==2.0.0 \
     # Current PyTorch release for CUDA
     torch==1.2.0 \
     torchvision==0.5.0 \
     # Stable fast.ai release by default it installs latest PyTorch
-    fastai; \
-    fi
+    fastai
+
 # Other dependencies
 RUN python3 -m pip install -U \
     bcolz \
