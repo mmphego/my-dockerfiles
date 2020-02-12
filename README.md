@@ -2,7 +2,6 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c707be6f5c746b2a9cb2bf9877e0ce4)](https://app.codacy.com/app/mmphego/my-dockerfiles?utm_source=github.com&utm_medium=referral&utm_content=mmphego/my-dockerfiles&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/mmphego/my-dockerfiles.svg?branch=master)](https://travis-ci.org/mmphego/my-dockerfiles)
-[![CircleCI](https://circleci.com/gh/mmphego/my-dockerfiles.svg?style=svg)](https://circleci.com/gh/mmphego/my-dockerfiles)
 [![LICENCE](https://img.shields.io/github/license/mmphego/my-dockerfiles.svg?style=flat)](LICENCE)
 
 List of my Dockerfiles:
