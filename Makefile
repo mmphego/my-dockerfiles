@@ -9,7 +9,8 @@ IMAGES := markdownlint \
 		git-changelog-generator \
 		latex-full
 
-REGISTRY := https://index.docker.io/v1/
+DOCKER_USERNAME := mmphego
+REGISTRY := https://index.docker.io/v1
 DATE_ID := $(shell date +"%y.%m.%d")
 .DEFAULT_GOAL := help
 
@@ -45,7 +46,7 @@ help:
 build_all: $(foreach img, $(IMAGES), build_$(img))
 	touch .$@
 
-push_all:  ## Push all images to CAM registry.
+push_all:  ## Push all images to docker_username.
 	for img in $(IMAGES); do \
 		if ! make push_$(subst .,,$$img); then \
 			echo "Failed to build ${img}."; \
@@ -58,8 +59,7 @@ push_all:  ## Push all images to CAM registry.
 ##########################################################################################
 pre_build_%: IMAGE = $(subst pre_build_,,$@)
 pre_build_%:  ## Run Dockerfile linter (https://github.com/hadolint/hadolint)
-	# docker run --rm -i hadolint/hadolint < $(IMAGE)/Dockerfile
-	$(nop)
+	docker run --rm -i hadolint/hadolint < $(IMAGE)/Dockerfile
 
 build_cached_%: IMAGE = $(subst build_cached_,,$@)
 build_cached_%: pre_build_%  ## Build the docker image [Using cache when building].
@@ -71,18 +71,16 @@ build_%: pre_build_%  ## Build the docker image [Not using cache when building].
 	touch .$@
 
 tag_%: IMAGE = $(subst tag_,,$@)
-tag_%: pre_build_%  ## Tag a container before pushing to cam registry.
+tag_%: pre_build_%  ## Tag a container before pushing to docker_username.
 	if [ ! -f ".build_${IMAGE}" ]; then \
 		echo "Rebuilding the image: ${IMAGE}"; \
 		make build_$(IMAGE); \
 	fi;
-	docker tag "$(IMAGE):latest" "$(REGISTRY)/$(IMAGE):$(DATE_ID)"
-	docker tag "$(IMAGE):latest" "$(REGISTRY)/$(IMAGE):latest"
+	docker tag "$(IMAGE):latest" "$(IMAGE):latest"
 
 push_%: IMAGE = $(subst push_,,$@)
-push_%: tag_%  ## Push tagged container to cam registry.
-	docker push $(REGISTRY)/$(IMAGE):$(DATE_ID)
-	docker push $(REGISTRY)/$(IMAGE):latest
+push_%: tag_%  ## Push tagged container to docker_username.
+	docker push $(DOCKER_USERNAME)/$(IMAGE):latest
 	rm -rf ".build_$(IMAGE)"
 
 start_%: IMAGE = $(subst start_,,$@)
@@ -111,3 +109,7 @@ rmi_%: cleanup_%  ## Cleanup and remove all remnants containers and images.
 prune_%: IMAGE = $(subst prune_,,$@)
 prune_%:  ## Remove images older than one week
 	docker rmi --force $(shell docker images --format '{{.Repository}}:{{.Tag}}:{{.CreatedSince}}' | grep $(IMAGE) | grep -v "<none>" | grep 'weeks ago\|months ago\|years ago' | cut -f 1-2 -d ':') || true
+
+.PHONY: prune_system
+prune_system:
+	docker system prune -af
