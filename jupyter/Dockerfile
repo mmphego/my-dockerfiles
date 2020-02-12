@@ -1,6 +1,6 @@
 # Usage:
 #       docker run --restart=on-failure:10 -d --name=jupyterhub -p 8000:8000 jupyterhub
-
+ARG DL_TOOLS=0
 # hadolint ignore=DL3007
 FROM jupyterhub/jupyterhub:latest
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
@@ -13,10 +13,14 @@ RUN apt-get update -q && \
     build-essential \
     curl \
     graphviz \
+    gcc \
     libstring-mkpasswd-perl \
     locate \
     make \
     python3.8-dev \
+    python3-dev \
+    build-essential \
+    bash-completion \
     software-properties-common \
     vim \
     wget \
@@ -27,22 +31,21 @@ RUN apt-get update -q && \
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3.8
-# Current tensorflow release for CPU-only
-RUN python3 -m pip install -U \
-    tensorflow==2.0.0
 
-# Current PyTorch release for CUDA
-RUN python3 -m pip install \
+RUN if [ "${DL_TOOLS}" = "1" ]; then \
+    python3 -m pip install -U \
+    # Current tensorflow release for CPU-only
+    tensorflow==2.0.0 \
+    # Current PyTorch release for CUDA
     torch==1.2.0 \
-    torchvision==0.5.0
-
-# Stable fast.ai release by default it installs latest PyTorch
-RUN python3 -m pip install \
-    fastai
-
+    torchvision==0.5.0 \
+    # Stable fast.ai release by default it installs latest PyTorch
+    fastai; \
+    fi
 # Other dependencies
 RUN python3 -m pip install -U \
     bcolz \
+    black \
     graphviz \
     h5py \
     ipython['all'] \
@@ -57,13 +60,13 @@ RUN python3 -m pip install -U \
     seaborn \
     sklearn \
     tables \
-    xgboost \
     tqdm \
     requests \
+    xgboost \
     xlrd
 
 # Jupyter dependencies
-RUN pip install -U \
+RUN python3 -m pip install -U \
     jupyter_contrib_nbextensions==0.5.1 \
     jupyter_nbextensions_configurator==0.4.1 && \
     jupyter contrib nbextension install --system --symlink && \
@@ -80,7 +83,9 @@ RUN pip install -U \
     jupyter nbextension enable collapsible_headings/main --system && \
     jupyter nbextension enable codefolding/main --system && \
     jupyter nbextension enable codefolding/edit --system && \
-    jupyter nbextension enable cell_filter/cell_filter --system
+    jupyter nbextension enable cell_filter/cell_filter --system && \
+    jupyter nbextension install https://github.com/drillan/jupyter-black/archive/master.zip && \
+    jupyter nbextension enable jupyter-black-master/jupyter-black
 
 # Setup user
 RUN useradd jupyter -m -p "$(mkpasswd jupyter)" -s /bin/bash
