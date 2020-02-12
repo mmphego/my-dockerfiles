@@ -3,7 +3,7 @@ language: c
 sudo: required
 
 git:
-  depth: 3
+  depth: 1
 
 services:
   - docker
@@ -11,16 +11,5 @@ services:
 notifications:
   email: change
 
-before_install:
-  - cd fast.ai && git clone --depth 1 https://github.com/fastai/fastai.git && cd -
-
-install:
-  - make -C fast.ai build && make -C fast.ai run
-  - make -C latex-full build
-  - make -C markdownlint build
-  - sudo make -C travis-client install && make -C travis-client build
-
 script:
-  - docker ps -a
-  - cd latex-full && bash latexgen.sh main.tex && cd -
-  - if command -v travis >/dev/null ;then exit 0; else exit 1; fi
+  - make build_all
