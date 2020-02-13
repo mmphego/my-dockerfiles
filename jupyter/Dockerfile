@@ -9,16 +9,15 @@ LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 RUN apt-get update -q && \
     apt-get install -qq -y --no-install-recommends \
     apg \
+    bash-completion \
     build-essential \
     curl \
-    graphviz \
     gcc \
+    graphviz \
     libstring-mkpasswd-perl \
     locate \
     make \
     python3-dev \
-    build-essential \
-    bash-completion \
     software-properties-common \
     vim \
     wget \
@@ -49,17 +48,18 @@ RUN python3 -m pip install -U \
     ipython['all'] \
     ipywidgets \
     jupyter \
+    matplotlib \
     numpy \
     pandas \
+    pandas_utility \
     Pillow \
+    requests \
     scikit-learn \
     scipy \
-    matplotlib \
     seaborn \
     sklearn \
     tables \
     tqdm \
-    requests \
     xgboost \
     xlrd
 
@@ -69,19 +69,19 @@ RUN python3 -m pip install -U \
     jupyter_nbextensions_configurator==0.4.1 && \
     jupyter contrib nbextension install --system --symlink && \
     jupyter nbextensions_configurator enable --system && \
-    jupyter nbextension enable varInspector/main --system && \
-    jupyter nbextension enable toc2/main --system && \
-    jupyter nbextension enable spellchecker/main --system && \
-    jupyter nbextension enable rubberband/main --system && \
-    jupyter nbextension enable highlighter/highlighter --system && \
-    jupyter nbextension enable hide_header/main --system && \
-    jupyter nbextension enable freeze/main --system && \
-    jupyter nbextension enable exercise2/main --system && \
-    jupyter nbextension enable exercise/main --system && \
-    jupyter nbextension enable collapsible_headings/main --system && \
-    jupyter nbextension enable codefolding/main --system && \
-    jupyter nbextension enable codefolding/edit --system && \
     jupyter nbextension enable cell_filter/cell_filter --system && \
+    jupyter nbextension enable codefolding/edit --system && \
+    jupyter nbextension enable codefolding/main --system && \
+    jupyter nbextension enable collapsible_headings/main --system && \
+    jupyter nbextension enable exercise/main --system && \
+    jupyter nbextension enable exercise2/main --system && \
+    jupyter nbextension enable freeze/main --system && \
+    jupyter nbextension enable hide_header/main --system && \
+    jupyter nbextension enable highlighter/highlighter --system && \
+    jupyter nbextension enable rubberband/main --system && \
+    jupyter nbextension enable spellchecker/main --system && \
+    jupyter nbextension enable toc2/main --system && \
+    jupyter nbextension enable varInspector/main --system && \
     jupyter nbextension install https://github.com/drillan/jupyter-black/archive/master.zip && \
     jupyter nbextension enable jupyter-black-master/jupyter-black
 
