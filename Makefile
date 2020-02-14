@@ -67,7 +67,7 @@ build_cached_%: pre_build_%  ## Build the docker image [Using cache when buildin
 
 build_%: IMAGE = $(subst build_,,$@)
 build_%: pre_build_%  ## Build the docker image [Not using cache when building].
-	docker build --no-cache -t "$(IMAGE):latest" "${IMAGE}"
+	docker build --no-cache -t "$(DOCKER_USERNAME)/$(IMAGE):latest" "${IMAGE}"
 	touch .$@
 
 tag_%: IMAGE = $(subst tag_,,$@)
@@ -85,7 +85,7 @@ push_%: tag_%  ## Push tagged container to docker_username.
 
 start_%: IMAGE = $(subst start_,,$@)
 start_%:  ## Start a container.
-	docker run -it -d --name $(IMAGE) $(IMAGE):latest
+	docker run -it $(ARG) --name $(IMAGE) $(DOCKER_USERNAME)/$(IMAGE):latest
 
 stop_%: IMAGE = $(subst stop_,,$@)
 stop_%:  ## Stop a running container.

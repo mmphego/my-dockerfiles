@@ -19,6 +19,7 @@ RUN apt-get update -q && \
     make \
     python3-dev \
     software-properties-common \
+    unzip \
     vim \
     wget \
     whois && \
