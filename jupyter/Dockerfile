@@ -36,12 +36,13 @@ ARG DL_TOOLS
 RUN test -z "$DL_TOOLS" || python3 -m pip install -U \
     # Current tensorflow release for CPU-only
     tensorflow==2.0.0 \
-    tensorboard \
+    tensorboard==2.0.0 \
     # Current PyTorch release for CUDA
     torch==1.2.0 \
-    torchvision==0.5.0 \
+    torchvision==0.4.0 \
     # Stable fast.ai release by default it installs latest PyTorch
-    fastai \
+    fastai
+RUN test -z "$DL_TOOLS" || python3 -c "import torch" && python3 -m pip install -U \
     # Latest release of Detectron2: Object detection and segmentation. (Depends on Torch)
     'git+https://github.com/facebookresearch/detectron2.git' \
     'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
