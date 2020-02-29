@@ -14,6 +14,7 @@ RUN apt-get update -q && \
     curl \
     g++ \
     gcc \
+    git \
     graphviz \
     libstring-mkpasswd-perl \
     locate \
