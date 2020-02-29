@@ -12,6 +12,7 @@ RUN apt-get update -q && \
     bash-completion \
     build-essential \
     curl \
+    g++ \
     gcc \
     graphviz \
     libstring-mkpasswd-perl \
@@ -32,8 +33,12 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python3
 
 ARG DL_TOOLS
 RUN test -z "$DL_TOOLS" || python3 -m pip install -U \
+    # Latest release of Detectron2: Object detection and segmentation.
+    'git+https://github.com/facebookresearch/detectron2.git' \
+    'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI' \
     # Current tensorflow release for CPU-only
     tensorflow==2.0.0 \
+    tensorboard \
     # Current PyTorch release for CUDA
     torch==1.2.0 \
     torchvision==0.5.0 \
@@ -44,6 +49,7 @@ RUN test -z "$DL_TOOLS" || python3 -m pip install -U \
 RUN python3 -m pip install -U \
     bcolz \
     black \
+    cython \
     graphviz \
     h5py \
     ipython['all'] \
@@ -54,6 +60,7 @@ RUN python3 -m pip install -U \
     pandas \
     pandas_utility \
     Pillow \
+    pyyaml \
     requests \
     scikit-learn \
     scipy \
@@ -61,6 +68,7 @@ RUN python3 -m pip install -U \
     sklearn \
     tables \
     tqdm \
+    watermark \
     xgboost \
     xlrd
 
