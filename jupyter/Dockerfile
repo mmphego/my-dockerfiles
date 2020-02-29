@@ -43,7 +43,7 @@ RUN test -z "$DL_TOOLS" || python3 -m pip install -U \
     fastai \
     # Latest release of Detectron2: Object detection and segmentation. (Depends on Torch)
     'git+https://github.com/facebookresearch/detectron2.git' \
-    'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI' \
+    'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
 
 # Other dependencies
 RUN python3 -m pip install -U \
