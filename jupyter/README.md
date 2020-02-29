@@ -10,10 +10,12 @@ A Jupyter Notebook Docker image. It includes the following kernels:
 
 ## Build & Launch
 
+TODO: Update the readme...
+
 To build:
 
 ```shell
-make build_jupyter
+docker build --no-cache -t mmphego/jupyterhub . --build-arg DL_TOOLS=true
 ```
 
 The default login credentials are `jupyter` for both Username and Password.
@@ -26,11 +28,11 @@ make start_jupyter ARG="--restart=on-failure:10 -d -p 8000:8000"
 When you are done you can stop the container.
 
 ```shell
-make stop
+
 ```
 
 else you can stop and delete the volume.
 
 ```shell
-make clean
+
 ```
