@@ -14,7 +14,11 @@ notifications:
 script:
   - make build_all
 
-after_success:
-  - docker --version  # document the version travis is using
+before_deploy:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - make push_all
+
+deploy:
+  provider: script
+  script: make push_all
+  on:
+    branch: master
