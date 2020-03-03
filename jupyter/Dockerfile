@@ -42,7 +42,7 @@ RUN test -z "$DL_TOOLS" || python3 -m pip install -U \
     torchvision==0.4.0 \
     # Stable fast.ai release by default it installs latest PyTorch
     fastai
-RUN test -z "$DL_TOOLS" || python3 -c "import torch" && python3 -m pip install -U \
+RUN test -z "$DL_TOOLS" || python3 -m pip install -U --no-deps \
     # Latest release of Detectron2: Object detection and segmentation. (Depends on Torch)
     'git+https://github.com/facebookresearch/detectron2.git' \
     'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
@@ -52,6 +52,7 @@ RUN python3 -m pip install -U \
     bcolz \
     black \
     cython \
+    fvcore \
     graphviz \
     h5py \
     ipython['all'] \
@@ -62,6 +63,7 @@ RUN python3 -m pip install -U \
     pandas \
     pandas_utility \
     Pillow \
+    pydot \
     pyyaml \
     requests \
     scikit-learn \
@@ -69,9 +71,11 @@ RUN python3 -m pip install -U \
     seaborn \
     sklearn \
     tables \
+    termcolor \
     tqdm \
     watermark \
     xgboost \
+    yacs \
     xlrd
 
 # Jupyter dependencies

@@ -5,6 +5,7 @@ FROM ruby:2.5-alpine
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 # hadolint ignore=DL3018
 RUN apk add --no-cache build-base gcc bash cmake
+# hadolint ignore=DL3028
 RUN gem install bundler rails jekyll
 WORKDIR /site
 COPY entrypoint.sh /usr/local/bin/
