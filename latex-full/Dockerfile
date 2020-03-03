@@ -1,6 +1,6 @@
 # Usage:
 # docker run --rm -i -v "$PWD":/data --user="$(id -u):$(id -g)" latex-full:ubuntu main.tex
-
+# hadolint ignore=DL3007
 FROM ubuntu:latest
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive

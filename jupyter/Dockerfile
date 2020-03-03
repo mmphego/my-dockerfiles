@@ -104,4 +104,8 @@ RUN python3 -m pip install -U \
 RUN useradd jupyter -m -p "$(mkpasswd jupyter)" -s /bin/bash
 EXPOSE 8000
 WORKDIR /home/jupyter
+RUN curl https://raw.githubusercontent.com/git/git/v2.25.0/contrib/completion/git-completion.bash -o \
+    /home/jupyter/.git-completion.bash && \
+    echo "source /home/jupyter/.git-completion.bash" >> /home/jupyter/.bashrc
+RUN echo "source /etc/profile.d/bash_completion.sh" >> /home/jupyter/.bashrc
 USER jupyter
