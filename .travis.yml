@@ -13,3 +13,8 @@ notifications:
 
 script:
   - make build_all
+
+after_success:
+  - docker --version  # document the version travis is using
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - make push_all
