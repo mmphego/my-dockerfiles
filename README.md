@@ -6,13 +6,15 @@
 
 List of my Dockerfiles:
 
-*  [fast.ai](fast.ai)
-*  [Jekyll](Jekyll)
-*  [LaTex](latex-full)
-*  [markdownlint](markdownlint)
-*  [Medium Posts 2 Markdown](medium2md)
-*  [Travis-Client.rb](travis-client)
-*  [github-changelog-generator](git-changelog-generator)
+|Image | Pulls | Build Status |
+|---|---|---|
+|[git-changelog-generator](git-changelog-generator) | | |
+|[jekyll](jekyll) | | |
+| [jupyter](jupyter) | | |
+| [latex-full](latex-full) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/latex.svg)]() | [![Docker Automated Build](https://img.shields.io/docker/automated/mmphego/latex.svg)]() |
+| [markdownlint](markdownlint) |![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/markdownlint.svg)|![Docker Automated build](https://img.shields.io/docker/automated/mmphego/markdownlint.svg) |
+| [medium2md](medium2md) | ![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/mediumexporter.svg)|![Docker Automated build](https://img.shields.io/docker/automated/mmphego/mediumexporter.svg)|
+| [travis-client](travis-client) |![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/travis-ci-cli.svg)|![Docker Automated build](https://img.shields.io/docker/automated/mmphego/travis-ci-cli.svg)|
 
 ## Feedback
 
