@@ -76,7 +76,7 @@ tag_%: pre_build_%  ## Tag a container before pushing to docker_username.
 		echo "Rebuilding the image: ${IMAGE}"; \
 		make build_$(IMAGE); \
 	fi;
-	docker tag "$(IMAGE):latest" "$(IMAGE):latest"
+	docker tag "$(DOCKER_USERNAME)/$(IMAGE):latest" "$(IMAGE):latest"
 
 push_%: IMAGE = $(subst push_,,$@)
 push_%: tag_%  ## Push tagged container to docker_username.

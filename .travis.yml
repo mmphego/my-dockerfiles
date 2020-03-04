@@ -19,6 +19,8 @@ before_deploy:
 
 deploy:
   provider: script
-  script: make push_all
+  script:
+    - ls -thora
+    - make push_all
   on:
     branch: master
