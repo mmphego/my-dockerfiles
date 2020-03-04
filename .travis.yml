@@ -11,6 +11,9 @@ services:
 notifications:
   email: change
 
+script:
+  - make build_all
+
 before_deploy:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
