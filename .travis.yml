@@ -12,7 +12,7 @@ notifications:
   email: change
 
 script:
-  - make build_all
+  - make -n build_all
 
 before_deploy:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -21,6 +21,6 @@ deploy:
   provider: script
   script:
     - ls -thora
-    - make push_all
+    - make -d push_all
   on:
     branch: master
