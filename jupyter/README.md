@@ -15,7 +15,7 @@ TODO: Update the readme...
 To build:
 
 ```shell
-docker build --no-cache -t mmphego/jupyterhub . --build-arg DL_TOOLS=true
+docker build --no-cache -t "$USER/$(basename $PWD)" . --build-arg DL_TOOLS=true
 ```
 
 The default login credentials are `jupyter` for both Username and Password.
