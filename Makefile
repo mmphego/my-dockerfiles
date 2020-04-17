@@ -1,13 +1,14 @@
 SHELL := /bin/bash -eo pipefail
 # Defined images here
 .PHONY: $(IMAGES)
-IMAGES := markdownlint \
+IMAGES := git-changelog-generator \
+		intel-openvino \
 		jekyll \
-		medium2md \
 		jupyter \
-		travis-client \
-		git-changelog-generator \
-		latex-full
+		latex-full \
+		markdownlint \
+		medium2md \
+		travis-client
 
 DOCKER_USERNAME := mmphego
 REGISTRY := https://index.docker.io/v1
