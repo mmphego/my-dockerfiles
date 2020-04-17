@@ -65,7 +65,7 @@ COPY openvino_downloader.sh .
 RUN ./openvino_downloader.sh ${OPENVINO_VERSION}
 
 # hadolint ignore=DL3010
-COPY l_openvino_toolkit_p_*.tgz .
+COPY /tmp/l_openvino_toolkit_p_*.tgz .
 RUN tar zxvf l_openvino_toolkit_p_*.tgz --strip-components=1 \
     && rm -rf l_openvino_toolkit_p_*.tgz
 
