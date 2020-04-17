@@ -5,8 +5,7 @@
 
 # Using alphine version instead of debian base image
 # https://github.com/nodejs/docker-node
-# hadolint ignore=DL3006
-FROM mhart/alpine-node
+FROM mhart/alpine-node:12
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 RUN mkdir -p /app/
 WORKDIR /app
