@@ -80,7 +80,9 @@ tag_%: pre_build_%  ## Tag a container before pushing to docker_username.
 
 push_%: IMAGE = $(subst push_,,$@)
 push_%: tag_%  ## Push tagged container to docker_username.
-	docker push $(DOCKER_USERNAME)/$(IMAGE):latest
+	for i in {1..3}; \
+		do docker push $(DOCKER_USERNAME)/$(IMAGE):latest && break || sleep 60; \
+	done;
 	rm -rf ".build_$(IMAGE)"
 
 start_%: IMAGE = $(subst start_,,$@)
