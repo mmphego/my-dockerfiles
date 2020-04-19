@@ -64,7 +64,7 @@ pre_build_%:  ## Run Dockerfile linter (https://github.com/hadolint/hadolint)
 
 build_cached_%: IMAGE = $(subst build_cached_,,$@)
 build_cached_%: pre_build_%  ## Build the docker image [Using cache when building].
-	docker build -t "$(IMAGE):latest" "${IMAGE}"
+	docker build -t "$(DOCKER_USERNAME)/$(IMAGE):latest" "${IMAGE}"
 
 build_%: IMAGE = $(subst build_,,$@)
 build_%: pre_build_%  ## Build the docker image [Not using cache when building].
