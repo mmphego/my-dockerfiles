@@ -13,5 +13,7 @@ docker build --no-cache -t "$USER/$(basename $PWD)" .
 To run:
 
 ```shell
-make shell_intel-openvino
+docker run -ti "$USER/$(basename $PWD)"
+# or from root:
+# make shell_intel-openvino
 ```
