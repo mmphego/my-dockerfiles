@@ -59,6 +59,9 @@ RUN python3 -m pip install \
     paho-mqtt \
     ipython['all']
 
+RUN rm -rf /usr/bin/python && \
+    ln -s /usr/bin/python3 /usr/bin/python
+
 WORKDIR ${OPENVINO_DIR}
 
 COPY openvino_downloader.sh .
