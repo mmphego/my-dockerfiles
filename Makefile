@@ -1,14 +1,7 @@
 SHELL := /bin/bash -eo pipefail
 # Defined images here
 .PHONY: $(IMAGES)
-IMAGES := git-changelog-generator \
-		intel-openvino \
-		jekyll \
-		jupyter \
-		latex-full \
-		markdownlint \
-		medium2md \
-		travis-client
+IMAGES := $(sort $(shell find . -maxdepth 1 -type d \( ! -iname ".*" \)  -printf "%f\n"))
 
 DOCKER_USERNAME := mmphego
 REGISTRY := https://index.docker.io/v1
