@@ -44,10 +44,12 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python3
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get -y install --no-install-recommends \
-    nodejs \
     ffmpeg \
-    libzmq3-dev \
     libkrb5-dev \
+    libprotobuf-dev \
+    libzmq3-dev \
+    nodejs \
+    protobuf-compiler \
     && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/* && \
