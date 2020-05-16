@@ -60,7 +60,8 @@ RUN python3 -m pip install \
     numpy \
     paho-mqtt \
     ipython['all'] \
-    imutils
+    imutils \
+    paho-mqtt
 
 RUN rm -rf /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python
