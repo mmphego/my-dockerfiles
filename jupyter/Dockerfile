@@ -41,7 +41,10 @@ RUN test -z "$DL_TOOLS" || python3 -m pip install -U \
     torch==1.2.0 \
     torchvision==0.4.0 \
     # Stable fast.ai release by default it installs latest PyTorch
-    fastai
+    fastai \
+    # Stable mxnet and gluoncv release https://gluon-cv.mxnet.io/install.html
+    mxnet \
+    gluoncv
 RUN test -z "$DL_TOOLS" || python3 -m pip install -U --no-deps \
     # Latest release of Detectron2: Object detection and segmentation. (Depends on Torch)
     'git+https://github.com/facebookresearch/detectron2.git' \
