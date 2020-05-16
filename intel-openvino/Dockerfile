@@ -93,6 +93,9 @@ RUN apt-get clean -y && \
         /var/lib/apt/lists/* \
         /var/cache/apt/archives
 
+RUN echo "export PATH=\"/opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/:$PATH\"" >> /root/.bashrc
+RUN echo "export PATH=\"/opt/intel/openvino/deployment_tools/model_optimizer/:$PATH\"" >> /root/.bashrc
 RUN echo "source ${INSTALL_DIR}${OPENVINO_DIR}/bin/setupvars.sh" >> /root/.bashrc
+
 WORKDIR /app
 CMD ["/bin/bash"]
