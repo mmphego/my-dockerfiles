@@ -61,7 +61,8 @@ RUN python3 -m pip install \
     paho-mqtt \
     ipython['all'] \
     imutils \
-    paho-mqtt
+    paho-mqtt \
+    pyyaml
 
 RUN rm -rf /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python
@@ -94,6 +95,7 @@ RUN apt-get clean -y && \
         /var/cache/apt/archives
 
 RUN echo "export PATH=\"/opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/:$PATH\"" >> /root/.bashrc
+RUN echo "export MODEL_DOWNLOADER=/opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/" >> /root/.bashrc
 RUN echo "export PATH=\"/opt/intel/openvino/deployment_tools/model_optimizer/:$PATH\"" >> /root/.bashrc
 RUN echo "source ${INSTALL_DIR}${OPENVINO_DIR}/bin/setupvars.sh" >> /root/.bashrc
 
