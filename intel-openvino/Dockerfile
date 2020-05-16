@@ -59,7 +59,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 RUN python3 -m pip install \
     numpy \
     paho-mqtt \
-    ipython['all']
+    ipython['all'] \
+    imutils
 
 RUN rm -rf /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python
