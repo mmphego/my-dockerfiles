@@ -20,16 +20,34 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     cmake \
     curl \
+    dbus-x11 \
     g++ \
     gcc \
+    gconf-service \
+    gconf2 \
     git \
     gnupg \
+    gvfs-bin \
+    libasound2 \
+    libcanberra-gtk-module \
+    libcanberra-gtk3-module \
+    libcap2 \
+    libgconf-2-4 \
+    libgtk2.0-0 \
+    libnotify4 \
+    libnss3 \
+    libx11-xcb-dev \
+    libxkbfile1 \
+    libxss1 \
+    libxtst6 \
     make \
     python3-dev \
     software-properties-common \
     sudo \
     vim \
     wget \
+    x11-apps \
+    xdg-utils \
     && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/* && \
@@ -57,10 +75,11 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 
 # Other dependencies
 RUN python3 -m pip install \
-    numpy \
-    paho-mqtt \
-    ipython['all'] \
     imutils \
+    ipython['all'] \
+    loguru \
+    matplotlib \
+    numpy \
     paho-mqtt \
     pyyaml
 
