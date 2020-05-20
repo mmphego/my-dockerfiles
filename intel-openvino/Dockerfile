@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcap2 \
     libgconf-2-4 \
     libgtk2.0-0 \
+    python3-tk \
     libnotify4 \
     libnss3 \
     libx11-xcb-dev \
@@ -81,7 +82,8 @@ RUN python3 -m pip install \
     matplotlib \
     numpy \
     paho-mqtt \
-    pyyaml
+    pyyaml \
+    tqdm
 
 RUN rm -rf /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python
