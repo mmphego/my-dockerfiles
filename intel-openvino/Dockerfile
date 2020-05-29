@@ -55,6 +55,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/cache/apt/archives/
 
+# Video Libraries
+
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y \
+    fswebcam \
+    libavcodec-dev \
+    libavformat-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libswscale-dev \
+    libtiff-dev \
+    libv4l-dev \
+    v4l-utils \
+    && \
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/apt/archives/
+
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN echo "deb https://deb.nodesource.com/${NODE_VERSION} $(lsb_release -s -c) main" | tee /etc/apt/sources.list.d/nodesource.list
