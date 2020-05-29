@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxss1 \
     libxtst6 \
     make \
+    mpg123 \
     python3-dev \
     software-properties-common \
     sudo \
@@ -76,6 +77,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 
 # Other dependencies
 RUN python3 -m pip install \
+    gtts \
     imutils \
     ipython['all'] \
     loguru \
@@ -83,6 +85,7 @@ RUN python3 -m pip install \
     numpy \
     paho-mqtt \
     pyyaml \
+    responsivevoice \
     tqdm
 
 RUN rm -rf /usr/bin/python && \
