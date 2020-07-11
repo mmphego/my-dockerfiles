@@ -104,6 +104,7 @@ RUN python3 -m pip install \
     paho-mqtt \
     pyyaml \
     responsivevoice \
+    PyAutoGUI==0.9.50 \
     tqdm
 
 RUN rm -rf /usr/bin/python && \
