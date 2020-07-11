@@ -73,6 +73,18 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/cache/apt/archives/
 
+# Monkey-patch PyAutoGUI internals
+# hadolint ignore=DL3008,DL3015
+RUN apt install -y \
+    python3-xlib \
+    xvfb \
+    xserver-xephyr \
+    && \
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/apt/archives/
+
+
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN echo "deb https://deb.nodesource.com/${NODE_VERSION} $(lsb_release -s -c) main" | tee /etc/apt/sources.list.d/nodesource.list
