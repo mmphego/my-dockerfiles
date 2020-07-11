@@ -58,6 +58,7 @@ RUN python3 -m pip install -U \
     fvcore \
     graphviz \
     h5py \
+    handcalcs \
     ipython['all'] \
     ipywidgets \
     jupyter \
