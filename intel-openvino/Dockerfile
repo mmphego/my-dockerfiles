@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
 
 # Arguments
-ARG OPENVINO_VERSION=2020.2.120
+ARG OPENVINO_VERSION=2020.4.287
 
 # Environments
 ENV DEBIAN_FRONTEND=noninteractive
