@@ -75,7 +75,7 @@ RUN apt-get update && apt-get install -y \
 
 # Monkey-patch PyAutoGUI internals
 # hadolint ignore=DL3008,DL3015
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
     python3-xlib \
     xvfb \
     xserver-xephyr \
