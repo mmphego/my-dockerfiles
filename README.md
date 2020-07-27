@@ -8,8 +8,9 @@ List of my Dockerfiles:
 
 |Image | Pulls | Build Status |
 |---|---|---|
-|[git-changelog-generator](git-changelog-generator) | | |
-|[jekyll](jekyll) | | |
+| [git-changelog-generator](git-changelog-generator) | | |
+| [intel-openvino](intel-openvino) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/intel-openvino)]() | [![Docker Automated Build](https://img.shields.io/docker/automated/mmphego/intel-openvino)]() |
+| [jekyll](jekyll) | | |
 | [jupyter](jupyter) | | |
 | [latex-full](latex-full) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/latex.svg)]() | [![Docker Automated Build](https://img.shields.io/docker/automated/mmphego/latex.svg)]() |
 | [markdownlint](markdownlint) |![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/markdownlint.svg)|![Docker Automated build](https://img.shields.io/docker/automated/mmphego/markdownlint.svg) |
