@@ -6,16 +6,16 @@
 
 List of my Dockerfiles:
 
-|Image | Pulls | Build Status |
+|Image | Pulls | Image Size |
 |---|---|---|
-| [git-changelog-generator](git-changelog-generator) | | |
-| [intel-openvino](intel-openvino) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/intel-openvino)]() | [![Docker Automated Build](https://img.shields.io/docker/automated/mmphego/intel-openvino)]() |
-| [jekyll](jekyll) | | |
-| [jupyter](jupyter) | | |
-| [latex-full](latex-full) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/latex.svg)]() | [![Docker Automated Build](https://img.shields.io/docker/automated/mmphego/latex.svg)]() |
-| [markdownlint](markdownlint) |![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/markdownlint.svg)|![Docker Automated build](https://img.shields.io/docker/automated/mmphego/markdownlint.svg) |
-| [medium2md](medium2md) | ![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/mediumexporter.svg)|![Docker Automated build](https://img.shields.io/docker/automated/mmphego/mediumexporter.svg)|
-| [travis-client](travis-client) |![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/travis-ci-cli.svg)|![Docker Automated build](https://img.shields.io/docker/automated/mmphego/travis-ci-cli.svg)|
+| [git-changelog-generator](git-changelog-generator) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/git-changelog-generator)]() | [![Docker image-size Build](https://img.shields.io/docker/image-size/mmphego/git-changelog-generator)]() |
+| [intel-openvino](intel-openvino) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/intel-openvino)]() | [![Docker image-size Build](https://img.shields.io/docker/image-size/mmphego/intel-openvino)]() |
+| [jekyll](jekyll) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/jekyll)]() | [![Docker image-size Build](https://img.shields.io/docker/image-size/mmphego/jekyll)]() |
+| [jupyter](jupyter) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/jupyter)]() | [![Docker image-size Build](https://img.shields.io/docker/image-size/mmphego/jupyter)]() |
+| [latex-full](latex-full) | [![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/latex.svg)]() | [![Docker image-size Build](https://img.shields.io/docker/image-size/mmphego/latex.svg)]() |
+| [markdownlint](markdownlint) |[![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/markdownlint.svg)]()|![Docker image-size build](https://img.shields.io/docker/image-size/mmphego/markdownlint.svg) |
+| [medium2md](medium2md) | ![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/mediumexporter.svg)|![Docker image-size build](https://img.shields.io/docker/image-size/mmphego/mediumexporter.svg)|
+| [travis-client](travis-client) |![Docker Pulls](https://img.shields.io/docker/pulls/mmphego/travis-client.svg)|![Docker image-size build](https://img.shields.io/docker/image-size/mmphego/travis-client.svg)|
 
 ## Feedback
 
