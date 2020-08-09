@@ -107,6 +107,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 
 # Other dependencies
 RUN python3 -m pip install \
+    cvlib \
     gtts \
     imutils \
     ipython['all'] \
