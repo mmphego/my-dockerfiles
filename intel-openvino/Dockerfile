@@ -119,6 +119,7 @@ RUN python3 -m pip install \
     responsivevoice \
     PyAutoGUI==0.9.50 \
     pyvino \
+    scikit-image \
     tqdm
 
 RUN rm -rf /usr/bin/python && \
