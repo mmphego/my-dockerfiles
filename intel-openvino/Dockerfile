@@ -113,7 +113,6 @@ RUN python3 -m pip install \
     ipython['all'] \
     loguru \
     matplotlib \
-    numpy \
     paho-mqtt \
     pyyaml \
     responsivevoice \
