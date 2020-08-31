@@ -157,4 +157,3 @@ RUN echo "export PATH=\"/opt/intel/openvino/deployment_tools/model_optimizer/:$P
 RUN echo "source ${INSTALL_DIR}${OPENVINO_DIR}/bin/setupvars.sh" >> /root/.bashrc
 
 WORKDIR /app
-SHELL ["/bin/bash", "-l"]
