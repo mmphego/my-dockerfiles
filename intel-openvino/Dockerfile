@@ -7,7 +7,6 @@ ARG OPENVINO_VERSION=2020.2.120
 # Environments
 ENV DEBIAN_FRONTEND=noninteractive
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
-ENV NODE_VERSION=node_12.x
 ENV PIP_DEFAULT_TIMEOUT=100
 
 # OpenVINO Directories
@@ -18,6 +17,7 @@ ENV INSTALL_DIR=/opt/intel
 RUN apt-get update && apt-get install -y --no-install-recommends \
     bash-completion \
     build-essential \
+    ca-certificates \
     cmake \
     curl \
     dbus-x11 \
@@ -34,7 +34,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcap2 \
     libgconf-2-4 \
     libgtk2.0-0 \
-    python3-tk \
     libnotify4 \
     libnss3 \
     libx11-xcb-dev \
@@ -43,7 +42,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxtst6 \
     make \
     mpg123 \
+    nano \
     python3-dev \
+    python3-tk \
     software-properties-common \
     sudo \
     vim \
@@ -55,8 +56,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/cache/apt/archives/
 
-# Video Libraries
-
+# Video Libraries Dependencies
 # hadolint ignore=DL3008,DL3015
 RUN apt-get update && apt-get install -y \
     fswebcam \
@@ -73,32 +73,14 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/cache/apt/archives/
 
-# Monkey-patch PyAutoGUI internals
-# hadolint ignore=DL3008,DL3015
-RUN apt-get update && apt-get install -y \
-    python3-xlib \
-    xvfb \
-    xserver-xephyr \
-    && \
-    apt-get clean -y && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /var/cache/apt/archives/
-
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-RUN echo "deb https://deb.nodesource.com/${NODE_VERSION} $(lsb_release -s -c) main" | tee /etc/apt/sources.list.d/nodesource.list
-
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get -y install --no-install-recommends \
-    ffmpeg \
     libkrb5-dev \
     libprotobuf-dev \
     libzmq3-dev \
-    nodejs \
     protobuf-compiler \
     && \
     apt-get clean -y && \
@@ -107,17 +89,13 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 
 # Other dependencies
 RUN python3 -m pip install \
-    cvlib \
-    gtts \
-    imutils \
     ipython['all'] \
     loguru \
     matplotlib \
-    paho-mqtt \
+    numpy \
     pyyaml \
-    responsivevoice \
-    PyAutoGUI==0.9.50 \
     scikit-image \
+    scikit-learn \
     tqdm
 
 RUN rm -rf /usr/bin/python && \
@@ -141,18 +119,27 @@ RUN sed -i 's/decline/accept/g' silent.cfg && \
     ./install.sh --silent silent.cfg
 
 # Install Model Optimizer prerequisites
-RUN ${INSTALL_DIR}${OPENVINO_DIR}/deployment_tools/model_optimizer/install_prerequisites/install_prerequisites.sh
+ENV OPEN_MODEL_ZOO=${INSTALL_DIR}${OPENVINO_DIR}/deployment_tools
+RUN ${OPEN_MODEL_ZOO}/model_optimizer/install_prerequisites/install_prerequisites.sh
 
 RUN apt-get clean -y && \
     apt-get autoremove -y && \
     rm -rf \
-        ${OPENVINO_DIR} \
         /var/lib/apt/lists/* \
         /var/cache/apt/archives
 
-RUN echo "export PATH=\"/opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/:$PATH\"" >> /root/.bashrc
-RUN echo "export MODEL_DOWNLOADER=/opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/" >> /root/.bashrc
-RUN echo "export PATH=\"/opt/intel/openvino/deployment_tools/model_optimizer/:$PATH\"" >> /root/.bashrc
-RUN echo "source ${INSTALL_DIR}${OPENVINO_DIR}/bin/setupvars.sh" >> /root/.bashrc
+# Add a user
+RUN useradd -m -s /bin/bash vino
+RUN gpasswd -a vino sudo
+RUN gpasswd -a vino video
+RUN echo "vino ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN visudo --c
+USER vino
+
+ENV PYTHONPATH="${INSTALL_DIR}${OPENVINO_DIR}/data_processing/dl_streamer/python:${OPEN_MODEL_ZOO}/model_optimizer:${OPEN_MODEL_ZOO}/open_model_zoo/tools/downloader:${OPEN_MODEL_ZOO}/open_model_zoo/tools/accuracy_checker:${INSTALL_DIR}${OPENVINO_DIR}/python/python3:${INSTALL_DIR}${OPENVINO_DIR}/python/python3.6:${PYTHONPATH}"
+
+RUN echo "export PATH=${PATH}:${OPEN_MODEL_ZOO}/open_model_zoo/tools/downloader:${OPEN_MODEL_ZOO}/model_optimizer" >> ~/.bashrc
+RUN echo "export PYTHONPATH=${PYTHONPATH}" >> ~/.bashrc
+RUN echo "source ${INSTALL_DIR}${OPENVINO_DIR}/bin/setupvars.sh" >> ~/.bashrc
 
 WORKDIR /app
