@@ -130,8 +130,8 @@ RUN apt-get clean -y && \
 
 # Add a user
 RUN groupadd -r vino && \
-    useradd -r -g vino -G audio,video vino && \
-    mkdir -p /home/vino/ && \
+    useradd -m -s /bin/bash -r -g vino -G audio,video vino && \
+    mkdir -p /app && \
     chown -R vino:vino /app
 
 RUN echo "vino ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
