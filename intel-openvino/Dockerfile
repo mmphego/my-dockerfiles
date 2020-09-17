@@ -129,16 +129,18 @@ RUN apt-get clean -y && \
         /var/cache/apt/archives
 
 # Add a user
-RUN useradd -m -s /bin/bash vino
-RUN gpasswd -a vino sudo
-RUN gpasswd -a vino video
+RUN groupadd -r vino && \
+    useradd -r -g vino -G audio,video vino && \
+    mkdir -p /home/vino/ && \
+    chown -R vino:vino /app
+
 RUN echo "vino ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN visudo --c
 USER vino
 
 ENV PYTHONPATH="${INSTALL_DIR}${OPENVINO_DIR}/data_processing/dl_streamer/python:${OPEN_MODEL_ZOO}/model_optimizer:${OPEN_MODEL_ZOO}/open_model_zoo/tools/downloader:${OPEN_MODEL_ZOO}/open_model_zoo/tools/accuracy_checker:${INSTALL_DIR}${OPENVINO_DIR}/python/python3:${INSTALL_DIR}${OPENVINO_DIR}/python/python3.6:${PYTHONPATH}"
 
-RUN echo "export PATH=${PATH}:${OPEN_MODEL_ZOO}/open_model_zoo/tools/downloader:${OPEN_MODEL_ZOO}/model_optimizer" >> ~/.bashrc
+RUN echo "export PATH=${PATH}:${OPEN_MODEL_ZOO}/open_model_zoo/tools/downloader:${OPEN_MODEL_ZOO}/model_optimizer:~/.local/bin" >> ~/.bashrc
 RUN echo "export PYTHONPATH=${PYTHONPATH}" >> ~/.bashrc
 RUN echo "source ${INSTALL_DIR}${OPENVINO_DIR}/bin/setupvars.sh" >> ~/.bashrc
 
