@@ -52,7 +52,6 @@ RUN test -z "$DL_TOOLS" || python3 -m pip install -U --no-deps \
 
 # Other dependencies
 RUN python3 -m pip install -U \
-    bcolz \
     black \
     cython \
     fvcore \
