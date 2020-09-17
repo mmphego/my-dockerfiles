@@ -11,5 +11,5 @@ make build
 # Usage
 
 ```bash
-alias git-changlog='docker run -it --rm -v "$(pwd)":/usr/local/src/your-app mmphego/github-changelog' >> ~/.bashrc
+alias git-changlog='docker run -it --rm -v "$(pwd)":/usr/local/src/your-app mmphego/git-changelog-generator' >> ~/.bashrc
 ```
