@@ -140,7 +140,7 @@ USER vino
 
 ENV PYTHONPATH="${INSTALL_DIR}${OPENVINO_DIR}/data_processing/dl_streamer/python:${OPEN_MODEL_ZOO}/model_optimizer:${OPEN_MODEL_ZOO}/open_model_zoo/tools/downloader:${OPEN_MODEL_ZOO}/open_model_zoo/tools/accuracy_checker:${INSTALL_DIR}${OPENVINO_DIR}/python/python3:${INSTALL_DIR}${OPENVINO_DIR}/python/python3.6:${PYTHONPATH}"
 
-RUN echo "export PATH=${PATH}:${OPEN_MODEL_ZOO}/open_model_zoo/tools/downloader:${OPEN_MODEL_ZOO}/model_optimizer:~/.local/bin" >> ~/.bashrc
+RUN echo "export PATH=${PATH}:${OPEN_MODEL_ZOO}/open_model_zoo/tools/downloader:${OPEN_MODEL_ZOO}/model_optimizer:/home/vino/.local/bin" >> ~/.bashrc
 RUN echo "export PYTHONPATH=${PYTHONPATH}" >> ~/.bashrc
 RUN echo "source ${INSTALL_DIR}${OPENVINO_DIR}/bin/setupvars.sh" >> ~/.bashrc
 
