@@ -2,7 +2,7 @@
 # docker run --rm -i -v "$PWD":/data --user="$(id -u):$(id -g)" latex-full:ubuntu main.tex
 # hadolint ignore=DL3007
 FROM ubuntu:latest
-LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
+LABEL maintainer="Mpho Mphego"
 ENV DEBIAN_FRONTEND noninteractive
 # hadolint ignore=DL3008
 RUN apt-get update -q && \

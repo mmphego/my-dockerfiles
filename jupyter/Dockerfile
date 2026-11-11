@@ -3,7 +3,7 @@
 
 # hadolint ignore=DL3007
 FROM jupyterhub/jupyterhub:latest
-LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
+LABEL maintainer="Mpho Mphego"
 
 # hadolint ignore=DL3008
 RUN apt-get update -q && \

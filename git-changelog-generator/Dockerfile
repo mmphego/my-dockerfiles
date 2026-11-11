@@ -1,6 +1,6 @@
 FROM ruby:2.6.3-alpine3.9
 
-LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
+LABEL maintainer="Mpho Mphego"
 # hadolint ignore=DL3018
 RUN apk add --no-cache build-base gcc bash cmake git
 # hadolint ignore=DL3028

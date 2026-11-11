@@ -2,7 +2,7 @@
 # docker run --rm --name=jekyll -v "$PWD:/site" -p 4000:4000 mmphego/jekyll
 
 FROM ruby:2.5-alpine
-LABEL maintainer="Mpho Mphego <mpho112@gmail.com>"
+LABEL maintainer="Mpho Mphego"
 # hadolint ignore=DL3018
 RUN apk add --no-cache build-base gcc bash cmake
 # hadolint ignore=DL3028
